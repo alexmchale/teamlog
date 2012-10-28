@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'bcrypt'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -47,16 +48,19 @@ module RailsSkeleton
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
-    # Enforce whitelist mode for mass assignment.
-    # This will create an empty whitelist of attributes available for mass-assignment for all models
-    # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
-    # parameters by using an attr_accessible or attr_protected declaration.
-    config.active_record.whitelist_attributes = true
+    # Disable requiring attr_accessible in favor of strong_parameters.
+    config.active_record.whitelist_attributes = false
 
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Tell generators to generate SASS instead of SCSS or plain CSS.
+    config.sass.preferred_syntax = :sass if %w( development test ).include? Rails.env
+
+    # Add the app/modules path to the autoload path.
+    config.autoload_paths << Rails.root.join("app", "modules")
   end
 end

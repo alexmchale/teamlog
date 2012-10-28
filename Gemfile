@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 gem 'pg'
 
 gem 'bcrypt-ruby'
-gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'strong_parameters'
