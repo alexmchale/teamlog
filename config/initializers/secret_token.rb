@@ -1,7 +1,12 @@
-# Be sure to restart your server when you modify this file.
+# Generate a random secret token and store it in the config directory. If you
+# need to change the secret token, just delete config/secret_token.txt and
+# restart your app.
 
-# Your secret key for verifying the integrity of signed cookies.
-# If you change this key, all old signed cookies will become invalid!
-# Make sure the secret is at least 30 characters and all random,
-# no regular words or you'll be exposed to dictionary attacks.
-RailsSkeleton::Application.config.secret_token = '73b86c14778edea7e35ea7349aaa9c179c45a0021db089948aec3ace6b353c720fd4d047f13aa17c52a4b49d179105bee0b644572db36af3a868177719e41007'
+secret_token_path = Rails.root.join "config", "secret_token.txt"
+
+unless File.exists? secret_token_path
+  secret_token = SecureRandom.hex 64
+  File.open(secret_token_path, "w") { |f| f.write secret_token }
+end
+
+RailsSkeleton::Application.config.secret_token = File.read secret_token_path
