@@ -10,6 +10,7 @@ gem 'simple_form'
 gem 'strong_parameters'
 
 group :assets do
+  gem 'bootstrap-sass-rails'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'compass-rails', '~> 1.0.3'
   gem 'sass-rails', '~> 3.2.5'
