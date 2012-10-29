@@ -6,6 +6,7 @@ gem 'pg'
 gem 'bcrypt-ruby'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'onload_js-rails'
 gem 'simple_form'
 gem 'strong_parameters'
 

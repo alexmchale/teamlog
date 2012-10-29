@@ -79,6 +79,7 @@ GEM
     mime-types (1.19)
     minitest (4.1.0)
     multi_json (1.3.6)
+    onload_js-rails (0.0.2)
     pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -153,6 +154,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   minitest
+  onload_js-rails
   pg
   rails (= 3.2.8)
   sass-rails (~> 3.2.5)
