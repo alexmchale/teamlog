@@ -16,3 +16,8 @@ What's Included
 * factory girl and shoulda for testing
 * awesome_print
 * strong_parameters
+
+Using
+=====
+
+    git clone -o skeleton git://github.com/alexmchale/rails_skeleton_3.2.git my_app
