@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'pg'
 
 gem 'bcrypt-ruby'
@@ -12,10 +12,10 @@ gem 'strong_parameters'
 
 group :assets do
   gem 'bootstrap-sass-rails'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'compass-rails', '~> 1.0.3'
-  gem 'sass-rails', '~> 3.2.5'
-  gem 'uglifier', '~> 1.3.0'
+  gem 'coffee-rails'
+  gem 'compass-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
 group :development, :test do
@@ -24,4 +24,6 @@ group :development, :test do
   gem 'minitest'
   gem 'shoulda'
   gem 'turn'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
