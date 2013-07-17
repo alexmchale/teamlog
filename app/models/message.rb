@@ -5,4 +5,6 @@ class Message < ActiveRecord::Base
 
   validates :user, presence: true, associated: true
 
+  scope :newest_first, order("created_at DESC")
+
 end

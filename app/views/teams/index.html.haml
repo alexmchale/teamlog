@@ -1,0 +1,7 @@
+%h1 teams
+
+%ul
+  - @teams.each do |team|
+    = link_to team.name, team_path(team)
+
+%p= link_to "create a team", new_team_path

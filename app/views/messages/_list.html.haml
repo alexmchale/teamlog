@@ -1,0 +1,14 @@
+%table.table
+
+  %thead
+    %tr
+      %th Date
+      %th User
+      %th Content
+
+  %tbody
+    - messages.each do |message|
+      %tr
+        %td= l message.created_at
+        %td= message.user.email
+        %td= message.content

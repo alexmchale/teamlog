@@ -8,20 +8,27 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @message.user = current_user
+    @message.team = team
   end
 
   def create
     @message = Message.new(message_params)
     @message.user = current_user
+    @message.team = team
 
     if @message.save
-      redirect_to messages_path
+      redirect_to team_path(team)
     else
       render "new"
     end
   end
 
   private
+
+  def team
+    @team ||= current_user.teams.find(params[:team_id])
+  end
 
   def message_params
     params.require(:message).permit(:content)

@@ -19,11 +19,5 @@
 
       = yield
 
-    - if current_user
-
-      .container
-        .alert.alert-info= "you are currently signed in as #{current_user.email}"
-
-
     = javascript_include_tag :application
     = onload_tag
