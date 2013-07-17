@@ -1,0 +1,7 @@
+%h1 create a message
+
+= simple_form_for @message do |f|
+
+  = f.input :content, :as => :string
+
+  = f.submit
