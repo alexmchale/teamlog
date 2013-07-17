@@ -60,7 +60,9 @@ module RailsSkeleton
     # Tell generators to generate SASS instead of SCSS or plain CSS.
     config.sass.preferred_syntax = :sass if %w( development test ).include? Rails.env
 
-    # Add the app/modules path to the autoload path.
+    # Add some new standard paths to the autoload path.
     config.autoload_paths << Rails.root.join("app", "modules")
+    config.autoload_paths << Rails.root.join("app", "decorators")
+    config.autoload_paths << Rails.root.join("app", "presenters")
   end
 end
