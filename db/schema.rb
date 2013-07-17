@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717021121) do
+ActiveRecord::Schema.define(:version => 20130717021740) do
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "messages", ["team_id"], :name => "index_messages_on_team_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "team_users", :force => true do |t|
     t.integer  "team_id"
@@ -31,8 +42,9 @@ ActiveRecord::Schema.define(:version => 20130717021121) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "password_hash"
   end
 
 end
