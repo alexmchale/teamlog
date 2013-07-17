@@ -15,9 +15,15 @@
       - if flash[:error].present?
         .alert.alert-error= flash[:error]
       - if flash[:notice].present?
-        .alert.alert-info= flash[:notice]
+        .alert.alert-success= flash[:notice]
 
       = yield
+
+    - if current_user
+
+      .container
+        .alert.alert-info= "you are currently signed in as #{current_user.email}"
+
 
     = javascript_include_tag :application
     = onload_tag

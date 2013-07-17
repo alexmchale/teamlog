@@ -6,7 +6,9 @@ class UserSessionsController < ApplicationController
 
   def create
     @user_session = UserSession.new(user_session_params)
+
     if @user_session.save
+      self.current_user = @user_session.user
       flash[:notice] = "you are now signed in"
       redirect_to root_path
     else
