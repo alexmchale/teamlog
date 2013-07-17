@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params[:user])
+    @user = User.create(user_params)
 
     if @user
       redirect_to root_path
@@ -13,6 +13,12 @@ class UsersController < ApplicationController
       flash.now[:error] = "couldn't create that user"
       render "new"
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 
 end

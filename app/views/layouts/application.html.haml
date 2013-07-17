@@ -9,7 +9,15 @@
     = csrf_meta_tags
 
   %body
-    .container= yield
+
+    .container
+
+      - if flash[:error].present?
+        .alert.alert-error= flash[:error]
+      - if flash[:notice].present?
+        .alert.alert-info= flash[:notice]
+
+      = yield
 
     = javascript_include_tag :application
     = onload_tag
