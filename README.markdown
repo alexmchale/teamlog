@@ -1,23 +1,37 @@
-Rails 3.2 Skeleton Application
-==============================
+TeamLog
+=======
 
-This is a generic Rails project configured for quick start-up without having to
-manually configure my preferred gems for every project.
+Features
+--------
 
-What's Included
-===============
+* Users can create teams
+* Team leader adds people via email address
+* Users can post status updates
+* Users can view a dashboard of each team member's current status
 
-* bcrypt for user passwords
-* haml
-* twitter bootstrap
-* simple_form
-* postgresql
-* automatic secret_token generation for sessions
-* factory girl and shoulda for testing
-* awesome_print
-* strong_parameters
+Schema
+------
 
-Using
-=====
+### teams ###
 
-    git clone -o skeleton git://github.com/alexmchale/rails_skeleton_3.2.git my_app
+* id
+* name
+
+### team users ###
+
+* id
+* team id
+* user id
+* role
+
+### users ###
+
+* id
+* email
+
+### messages ###
+
+* id
+* user id
+* team id
+* content
