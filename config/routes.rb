@@ -1,5 +1,8 @@
 RailsSkeleton::Application.routes.draw do
 
-  # root to: ""
+  resources :users
+  resources :user_sessions
+
+  root :to => "user_sessions#new"
 
 end

@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   include BCrypt
 
+  acts_as_authentic
+
   attr_accessible :email
 
   has_many :team_users

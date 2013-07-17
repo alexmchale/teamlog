@@ -1,0 +1,13 @@
+%h1 sign in
+
+= simple_form_for @user_session do |f|
+
+  = f.input :email, :as => :string
+  = f.input :password, :as => :password
+
+  = f.submit
+
+%p
+  perhaps you'd like to
+  = link_to "create a user", new_user_path
+  instead?
