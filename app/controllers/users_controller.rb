@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     if @user
+      self.current_user = @user
       redirect_to root_path
     else
       flash.now[:error] = "couldn't create that user"

@@ -1,20 +1,19 @@
-%h1 team: #{@team.name}
+= present @team do |team_presenter|
 
-%h2 members
+  %h1 team: #{@team.name}
 
-%ul
-  - @team.users.each do |user|
-    %li
-      = user.email
-      &mdash;
-      = Message.where(user_id: user.id, team_id: @team.id).newest_first.first.try(:content)
+  %h2 members
 
-%p= link_to "create a message", new_team_message_path(@team)
+  %ul
+    = present @users, :team => @team do |user_presenter|
+      %li= user_presenter.badge
 
-%h2 messages
+  %p= link_to "create a message", new_team_message_path(@team)
 
-= render :partial => "messages/list", :locals => { :messages => @messages }
+  %h2 messages
 
-%p= link_to "create a message", new_team_message_path(@team)
+  = render :partial => "messages/list", :locals => { :messages => @messages }
 
-%p= link_to "back to teams", teams_path
+  %p= link_to "create a message", new_team_message_path(@team)
+
+  %p= link_to "back to teams", teams_path

@@ -6,7 +6,7 @@ class UserSession
 
   def save
     @user ||= User.where("LOWER(email) = ?", email.to_s.strip.downcase).first
-    @user.password == password
+    @user && @user.password == password
   end
 
   def self.create(attributes = {})

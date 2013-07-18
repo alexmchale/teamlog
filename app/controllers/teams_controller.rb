@@ -8,7 +8,8 @@ class TeamsController < ApplicationController
 
   def show
     @team = current_user.teams.find(params[:id])
-    @messages = @team.messages.newest_first.all.to_a
+    @users = @team.users.order("created_at ASC").to_a
+    @messages = @team.messages.newest_first.to_a
   end
 
   def new
