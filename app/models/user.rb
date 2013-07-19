@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   has_many :teams, :through => :team_users
   has_many :messages
 
+  validates :email, :presence => true, :email => true, :uniqueness => true
+
+  before_validation -> { self.email = email.to_s.strip }
+
   def password
     @password ||= Password.new(password_hash)
   end
@@ -13,6 +17,17 @@ class User < ActiveRecord::Base
   def password=(new_password)
     @password = Password.create(new_password)
     self.password_hash = @password
+  end
+
+  def add_to_team(team)
+    return if team == nil
+    return if new_record?
+
+    TeamUser.create! team_id: team.id, user_id: self.id
+  end
+
+  def self.find_by_email(email)
+    where("LOWER(email) = ?", email.to_s.downcase).first
   end
 
 end

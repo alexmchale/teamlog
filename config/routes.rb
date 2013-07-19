@@ -2,6 +2,7 @@ RailsSkeleton::Application.routes.draw do
 
   resources :teams do
     resources :messages
+    resources :users
   end
 
   resources :messages

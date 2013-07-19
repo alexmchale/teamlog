@@ -8,12 +8,16 @@
     = present @users, :team => @team do |user_presenter|
       %li= user_presenter.badge
 
-  %p= link_to "create a message", new_team_message_path(@team)
+  %p
+    = link_to "create a message", new_team_message_path(@team)
+    &bull;
+    = link_to "add a member", new_team_user_path(@team)
 
   %h2 messages
 
   = render :partial => "messages/list", :locals => { :messages => @messages }
 
-  %p= link_to "create a message", new_team_message_path(@team)
+  %p
+    = link_to "create a message", new_team_message_path(@team)
 
   %p= link_to "back to teams", teams_path
