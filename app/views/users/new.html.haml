@@ -1,11 +1,9 @@
 %h1 create a user
 
-= simple_form_for @user, :url => users_path(:team_id => @team.id) do |f|
+= simple_form_for @user do |f|
 
   = f.input :email, :as => :string
-
-  - if @team == nil
-    = f.input :password, :as => :password
+  = f.input :password, :as => :password
 
   = f.submit
 

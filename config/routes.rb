@@ -1,8 +1,10 @@
 RailsSkeleton::Application.routes.draw do
 
+  get "members/new"
+
   resources :teams do
     resources :messages
-    resources :users
+    resources :members
   end
 
   resources :messages

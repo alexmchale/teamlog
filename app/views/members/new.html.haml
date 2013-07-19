@@ -1,0 +1,10 @@
+%h1 add a member to #{@team.name}
+
+= simple_form_for @user, :url => team_members_path(@team) do |f|
+
+  = f.input :email, :as => :string
+
+  = f.submit
+
+%p
+  = link_to @team.name, @team
