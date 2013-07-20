@@ -1,16 +1,15 @@
 RailsSkeleton::Application.routes.draw do
 
-  get "members/new"
-
   resources :teams do
     resources :messages
     resources :members
   end
 
   resources :messages
-  resources :users
+  resources :user_activations
   resources :user_sessions
+  resources :users
 
-  root :to => "messages#index"
+  root :to => "teams#index"
 
 end

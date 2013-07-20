@@ -7,11 +7,12 @@ class MembersController < ApplicationController
   end
 
   def create
-    @user = User.find_by_email(@user.email)
+    @user = User.find_by_email(params[:user][:email])
     @user ||= User.new(user_params)
 
     if @user.save
       TeamUser.create(:team_id => @team.id, :user_id => @user.id)
+      UserMailer.activate_message(@user).deliver if @user.password_hash.blank?
       redirect_to @team
     else
       render "new"

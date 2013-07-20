@@ -7,15 +7,19 @@ class User < ActiveRecord::Base
   has_many :messages
 
   validates :email, :presence => true, :email => true, :uniqueness => true
+  validate -> { errors[:password] << "must be at least 4 characters in length" if @new_password_length && @new_password_length < 4 }
 
   before_validation -> { self.email = email.to_s.strip }
   before_save -> { self.secret_code ||= Digest::SHA1.hexdigest([ Time.now, rand ].join) }
 
+  attr_reader :new_password_length
+
   def password
-    @password ||= Password.new(password_hash)
+    @password ||= Password.new(password_hash) if password_hash != nil
   end
 
   def password=(new_password)
+    @new_password_length = new_password.length
     @password = Password.create(new_password)
     self.password_hash = @password
   end

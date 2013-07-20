@@ -1,0 +1,3 @@
+%h1= t "activate_email_subject"
+
+%p= link_to t("activate_link"), edit_user_activation_url(@user, secret_code: @user.secret_code)
