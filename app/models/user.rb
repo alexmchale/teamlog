@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :email => true, :uniqueness => true
 
   before_validation -> { self.email = email.to_s.strip }
+  before_save -> { self.secret_code ||= Digest::SHA1.hexdigest([ Time.now, rand ].join) }
 
   def password
     @password ||= Password.new(password_hash)
