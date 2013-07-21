@@ -7,11 +7,9 @@ class UserPresenter < Presenter
   def badge
     raw <<-HTML
       <div class="user-badge">
-        <div class="user-badge-inner">
-          #{gravatar_tag}
-          <span class="user-email">#{h user.email}</span>
-          #{h last_message}
-        </div>
+        #{gravatar_tag}
+        <span class="user-email">#{h user.email}</span>
+        #{h last_message}
       </div>
     HTML
   end

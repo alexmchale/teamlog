@@ -4,9 +4,7 @@
 
   %h2 members
 
-  .user-badges.js-masonry{:data => { :masonry_options => '{ "gutter": 10, "itemSelector": ".user-badge" }'}}
-    = present @users, :team => @team do |user_presenter|
-      = user_presenter.badge
+  = team_presenter.badges
 
   %p
     = link_to "create a message", new_team_message_path(@team)
