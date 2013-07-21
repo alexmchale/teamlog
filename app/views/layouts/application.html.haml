@@ -11,14 +11,12 @@
 
   %body
 
-    .container
+    - if flash[:error].present?
+      .alert.alert-error= flash[:error]
+    - if flash[:notice].present?
+      .alert.alert-success= flash[:notice]
 
-      - if flash[:error].present?
-        .alert.alert-error= flash[:error]
-      - if flash[:notice].present?
-        .alert.alert-success= flash[:notice]
-
-      = yield
+    = yield
 
     - if current_user
 

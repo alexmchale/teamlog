@@ -7,13 +7,9 @@ class UserPresenter < Presenter
   def badge
     raw <<-HTML
       <div class="user-badge">
-        <div class="user-gravatar">
+        <div class="user-badge-inner">
           #{gravatar_tag}
-        </div>
-        <div class="user-email">
-          #{h user.email}
-        </div>
-        <div class="user-message">
+          <span class="user-email">#{h user.email}</span>
           #{h last_message}
         </div>
       </div>
@@ -29,7 +25,7 @@ class UserPresenter < Presenter
   end
 
   def gravatar_tag
-    image_tag "http://www.gravatar.com/avatar/#{gravatar_md5}?d=retro"
+    image_tag "http://www.gravatar.com/avatar/#{gravatar_md5}?d=retro&s=80"
   end
 
 end
