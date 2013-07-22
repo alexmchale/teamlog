@@ -65,6 +65,9 @@ module RailsSkeleton
     config.autoload_paths << Rails.root.join("app", "decorators")
     config.autoload_paths << Rails.root.join("app", "presenters")
 
+    # Don't start up Rails when precompiling.
+    config.assets.initialize_on_precompile = false
+
     # Configure sendgrid.
     config.action_mailer.smtp_settings = {
       :user_name            => ENV["SENDGRID_USERNAME"],
