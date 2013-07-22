@@ -1,4 +1,12 @@
 @import "compass/utilities/general/clearfix"
+@import "compass/css3/border-radius"
+@import "compass/css3/box-shadow"
+
+//$badge-background: #A3BBFE
+//$badge-border: #0547FD
+
+$badge-background: #D5E0F0
+$badge-border: #09254E
 
 .user-badges-inner
 
@@ -6,22 +14,25 @@
 
 .user-badge
 
+  +border-radius(3px)
+  +single-box-shadow
+
   width: 300px
   min-height: 80px
-  background-color: #EEE
+  background-color: $badge-background
   padding: 5px
-  border: 1px solid #DDD
+  border: 1px solid $badge-border
+  margin-bottom: 10px
 
   img
     float: left
     padding-right: 10px
-    padding-bottom: 10px
 
   span.user-email
 
     display: block
     font-weight: bold
-    border-bottom: 1px solid #DDD
+    border-bottom: 1px solid $badge-border
 
 // .user-badge
 //   display: inline-block
