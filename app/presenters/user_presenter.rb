@@ -8,7 +8,7 @@ class UserPresenter < Presenter
     raw <<-HTML
       <div class="user-badge" data-user-id="#{h user.id}">
         #{gravatar_tag}
-        <span class="user-email">#{h user.email}</span>
+        <div class="user-email"><span class="user-email-inner">#{h user.email}</span></div>
         <span class="user-message">#{h last_message_content}</span>
         <span class="user-timestamp">#{h last_message_timestamp}</span>
       </div>

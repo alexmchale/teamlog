@@ -11,6 +11,18 @@ $ ->
     _.map _.keys(object), (key) ->
       parseInt key, 10
 
+  reflowContainer = ($container) ->
+    $container.imagesLoaded ->
+      # Adjust the font width of email addresses to fit.
+      $container.find(".user-email-inner").each ->
+        $userEmail = $(this)
+        fontSize = 20
+        while $userEmail.width() > 200
+          $userEmail.css("font-size", "#{fontSize}px")
+          fontSize -= 1
+      # Reflow the masonry layout to account for changes.
+      $container.masonry "layout"
+
   refreshTeamStatus = ->
 
     userBadges = $("#team_badges").find(".user-badge")
@@ -35,7 +47,7 @@ $ ->
         user = users[id]
         $badge = $(".user-badge[data-user-id=#{id}]")
         $message = $badge.find(".user-message")
-        $message.text user.message || "<no message>"
+        $message.text user.message || ""
         $timestamp = $badge.find(".user-timestamp")
         $timestamp.text user.timestamp || ""
 
@@ -51,9 +63,11 @@ $ ->
         $container.masonry "remove", badge
 
       # Reflow our masonry layout to account for any changes in badge size.
-      $container.masonry "layout"
+      reflowContainer($container)
 
       # Plan on polling again.
       setTimeout refreshTeamStatus, refreshFrequency
 
-  refreshTeamStatus()
+  reflowContainer($("#team_badges .user-badges-inner"))
+
+  setTimeout refreshTeamStatus, refreshFrequency
