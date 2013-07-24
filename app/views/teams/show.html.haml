@@ -1,21 +1,16 @@
+%input{:id => "team_id", :value => @team.id, :type => "hidden"}
+
 = present @team do |team_presenter|
 
   %h1 team: #{@team.name}
 
   %h2 members
 
-  = team_presenter.badges
+  #team_badges= team_presenter.badges
 
   %p
     = link_to "create a message", new_team_message_path(@team)
     &bull;
     = link_to "add a member", new_team_member_path(@team)
-
-  %h2 messages
-
-  = render :partial => "messages/list", :locals => { :messages => @messages }
-
-  %p
-    = link_to "create a message", new_team_message_path(@team)
-
-  %p= link_to "back to teams", teams_path
+    &bull;
+    = link_to "back to teams", teams_path

@@ -7,8 +7,24 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = current_user.teams.find(params[:id])
-    @messages = @team.messages.newest_first.to_a
+    @team     = current_user.teams.find(params[:id])
+    @users    = @team.users
+    @messages = @team.current_messages
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render :text => TeamPresenter.new(@team, view_context).badges, :layout => false
+        end
+      end
+
+      format.json do
+        user_presenters = @users.map { |u| UserPresenter.new u, view_context }
+        user_presenters.each { |u| u.team = @team }
+
+        render :json => { :team => @team, :users => user_presenters, :messages => @messages }
+      end
+    end
   end
 
   def new

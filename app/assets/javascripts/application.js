@@ -10,8 +10,16 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// ## Vendored Libraries ##
+//
 //= require jquery
 //= require jquery_ujs
+//= require onload
 //= require twitter/bootstrap
 //= require vendor/masonry.pkgd.min.js
-//= require_tree .
+//= require vendor/imagesloaded.pkgd.js
+//= require vendor/underscore.js
+//
+// ## Application Libraries ##
+//
+//= require teams

@@ -6,16 +6,25 @@ class UserPresenter < Presenter
 
   def badge
     raw <<-HTML
-      <div class="user-badge">
+      <div class="user-badge" data-user-id="#{h user.id}">
         #{gravatar_tag}
         <span class="user-email">#{h user.email}</span>
-        #{h last_message}
+        <span class="user-message">#{h last_message_content}</span>
+        <span class="user-timestamp">#{h last_message_timestamp}</span>
       </div>
     HTML
   end
 
   def last_message
-    Message.where(user_id: user.id, team_id: team.id).newest_first.first.try(:content)
+    @last_message ||= Message.where(user_id: user.id, team_id: team.id).newest_first.first
+  end
+
+  def last_message_content
+    last_message.try(:content)
+  end
+
+  def last_message_timestamp
+    "#{time_ago_in_words(last_message.created_at)} ago" if last_message
   end
 
   def gravatar_md5
@@ -24,6 +33,16 @@ class UserPresenter < Presenter
 
   def gravatar_tag
     image_tag "http://www.gravatar.com/avatar/#{gravatar_md5}?d=retro&s=80"
+  end
+
+  def as_json(options = {})
+    {
+      "id"        => user.id,
+      "email"     => user.email,
+      "badge"     => badge,
+      "message"   => last_message_content,
+      "timestamp" => last_message_timestamp,
+    }
   end
 
 end

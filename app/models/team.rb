@@ -8,4 +8,8 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  def current_messages
+    Message.current_team(self.id)
+  end
+
 end
