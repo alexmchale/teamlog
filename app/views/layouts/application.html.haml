@@ -6,9 +6,26 @@
     %title Rails Skeleton 3.2
 
     = stylesheet_link_tag :application, media: "all"
+    <script type="text/javascript" src="//use.typekit.net/zhv5xth.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     = csrf_meta_tags
 
   %body
+
+    .top-line
+      %span.brand
+        <span class="brand-first">Status</span><span class="brand-second">Keeper</span>
+      - if @team
+        &bull;
+        %span.team
+          = @team.name
+      - if current_user && current_user.teams.count > 1
+        &bull;
+        = link_to "Teams", teams_path
+      - if current_user
+        &bull;
+        = current_user.email
+        = link_to "sign out", user_session_path(current_user), :method => :delete
 
     - if flash[:error].present?
       .alert.alert-error= flash[:error]
@@ -16,17 +33,6 @@
       .alert.alert-success= flash[:notice]
 
     = yield
-
-    - if current_user
-
-      .container
-
-        = link_to "teams", teams_path
-        &mdash;
-        signed in as
-        = current_user.email
-        &mdash;
-        = link_to "sign out", user_session_path(current_user), :method => :delete
 
     = javascript_include_tag :application
     = onload_tag
