@@ -4,6 +4,7 @@ $ ->
   $teamId          = $("#team_id")
   teamId           = $teamId.val()
   refreshFrequency = 15000
+  maxEmailWidth    = 220
 
   return unless teamId?
 
@@ -17,7 +18,7 @@ $ ->
       $container.find(".user-email-inner").each ->
         $userEmail = $(this)
         fontSize = 20
-        while $userEmail.width() > 200
+        while $userEmail.width() > maxEmailWidth
           $userEmail.css("font-size", "#{fontSize}px")
           fontSize -= 1
       # Reflow the masonry layout to account for changes.

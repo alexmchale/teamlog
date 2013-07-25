@@ -32,7 +32,7 @@ class UserPresenter < Presenter
   end
 
   def gravatar_tag
-    image_tag "http://www.gravatar.com/avatar/#{gravatar_md5}?d=retro&s=80"
+    image_tag "http://www.gravatar.com/avatar/#{gravatar_md5}?d=retro&s=64"
   end
 
   def as_json(options = {})
