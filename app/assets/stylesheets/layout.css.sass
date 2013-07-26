@@ -2,11 +2,14 @@ body
   background-color: $body-background
   font-family: $content-font
   margin: 0px
+  padding: 0px !important
 
 h1, h2, h3, h4, h5, h6
   font-family: $heading-font
 
 .top-line
+
+  +clearfix
 
   text-align: center
   font-family: $heading-font
@@ -15,6 +18,16 @@ h1, h2, h3, h4, h5, h6
   background-color: $topline-background
   color: $topline-foreground
   padding: 5px 0px 5px 0px
+
+  .top-line-left
+    float: left
+    padding-left: 10px
+
+  .top-line-right
+    float: right
+    font-size: 16px
+    padding-right: 10px
+    text-align: right
 
   .brand
     font-size: 30px
@@ -25,3 +38,15 @@ h1, h2, h3, h4, h5, h6
 
   a
     color: $topline-foreground
+
+.container-800
+
+  width: 700px
+  margin: 0px auto
+
+form.large-form
+
+  input[type="text"]
+    font-size: 20px
+    padding: 5px
+    width: 100%

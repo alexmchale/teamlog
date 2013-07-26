@@ -3,10 +3,3 @@
 = present @team do |team_presenter|
 
   #team_badges= team_presenter.badges
-
-  %p
-    = link_to "create a message", new_team_message_path(@team)
-    &bull;
-    = link_to "add a member", new_team_member_path(@team)
-    &bull;
-    = link_to "back to teams", teams_path

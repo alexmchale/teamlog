@@ -13,19 +13,26 @@
   %body
 
     .top-line
-      %span.brand
-        <span class="brand-first">Status</span><span class="brand-second">Keeper</span>
-      - if @team
-        &bull;
-        %span.team
-          = @team.name
-      - if current_user && current_user.teams.count > 1
-        &bull;
-        = link_to "Teams", teams_path
-      - if current_user
-        &bull;
-        = current_user.email
-        = link_to "sign out", user_session_path(current_user), :method => :delete
+      .top-line-left
+        %span.brand
+          <span class="brand-first">Status</span><span class="brand-second">Keeper</span>
+      .top-line-right
+        .line1
+          - if current_user && current_user.teams.count > 1
+            = link_to "teams", teams_path
+            &bull;
+          - if current_user
+            = current_user.email
+            &bull;
+            = link_to "sign out", user_session_path(current_user), :method => :delete
+        - if @team
+          .line2
+            %span.team
+              = link_to @team.name, team_path(@team)
+            &bull;
+            = link_to "add member", new_team_member_path(@team)
+            &bull;
+            = link_to "update your status", new_team_message_path(@team)
 
     - if flash[:error].present?
       .alert.alert-error= flash[:error]
