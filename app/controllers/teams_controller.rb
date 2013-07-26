@@ -4,6 +4,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = current_user.teams.alphabetical.all.to_a
+    redirect_to team_path(@teams.first) if @teams.length == 1
   end
 
   def show
