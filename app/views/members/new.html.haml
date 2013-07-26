@@ -1,10 +1,10 @@
-.container-800
+.form-container
 
   %h1 add a member to #{@team.name}
 
-  = form_for @user, :url => team_members_path(@team), :html => { :class => "large-form" } do |f|
+  = simple_form_for @user, :url => team_members_path(@team), :html => { :class => "large-form" }, :defaults => { :required => false } do |f|
 
     /= f.text_field :name, :placeholder => "Enter the name of the person you'd like to invite"
-    = f.text_field :email, :placeholder => "Enter the email address of the person you'd like to invite"
+    = f.input :email
 
     = f.submit

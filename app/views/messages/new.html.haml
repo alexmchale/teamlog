@@ -1,9 +1,9 @@
-.container-800
+.form-container
 
   %h1 Update your status
 
-  = form_for [ @message.team, @message ] do |f|
+  = simple_form_for [ @message.team, @message ] do |f|
 
-    = f.text_field :content, :placeholder => "Update your status", :autofocus => "autofocus"
+    = f.input :content, :autofocus => "autofocus"
 
     = f.submit
