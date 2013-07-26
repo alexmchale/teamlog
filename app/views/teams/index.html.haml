@@ -1,7 +1,9 @@
-%h1 teams
+.form-container
 
-%ul
-  - @teams.each do |team|
-    %li= link_to team.name, team_path(team)
+  %h1 teams
 
-%p= link_to "create a team", new_team_path
+  %ul
+    - @teams.each do |team|
+      %li= link_to team.name, team_path(team)
+
+  %p= link_to "create a team", new_team_path

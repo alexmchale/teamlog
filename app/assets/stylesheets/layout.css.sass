@@ -4,7 +4,7 @@ body
   margin: 0px
   padding: 0px !important
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, label
   font-family: $heading-font
 
 h1
@@ -47,13 +47,30 @@ h1
   a
     color: $topline-foreground
 
-.container-800
+.form-container
 
-  width: 700px
+  width: $form-container-width
   margin: 0px auto
+  position: relative
 
-  input[type="text"]
+  .control-group
+
     font-size: 20px
-    padding: 5px
-    margin: 0px -10px 10px 0px
-    width: 685px
+
+    label
+      display: block
+      width: $form-label-width
+      position: absolute
+      left: 0px
+      line-height: 35px
+
+    div.controls
+
+      display: block
+      margin-left: $form-label-width
+
+      input[type="text"], input[type="email"], input[type="password"]
+        font-size: 20px
+        padding: 5px
+        margin: 0px -10px 10px 0px
+        width: $form-container-width - $form-label-width - 10px

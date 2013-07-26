@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   before_save -> { self.secret_code ||= Digest::SHA1.hexdigest([ Time.now, rand ].join) }
 
   attr_reader :new_password_length
+  attr_accessor :first_team_name
 
   def password
     @password ||= Password.new(password_hash) if password_hash != nil

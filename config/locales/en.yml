@@ -1,3 +1,11 @@
 en:
+
+  simple_form:
+    labels:
+      user:
+        first_team_name: "Team Name"
+        email: "Email"
+        password: "Password"
+
   activate_email_subject: "Activate Your Team Log Account"
   activate_link: "Click here to activate your account"

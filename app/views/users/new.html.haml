@@ -1,13 +1,16 @@
-%h1 create a user
+.form-container
 
-= simple_form_for @user do |f|
+  %h1 Create a StatusKeeper team
 
-  = f.input :email, :as => :string
-  = f.input :password, :as => :password
+  = simple_form_for @user, :defaults => { :required => false } do |f|
 
-  = f.submit
+    = f.input :first_team_name, :as => :string
+    = f.input :email, :as => :string
+    = f.input :password, :as => :password
 
-%p
-  perhaps you'd like to
-  = link_to "sign in", new_user_session_path
-  instead?
+    = f.submit
+
+  %p
+    perhaps you'd like to
+    = link_to "sign in", new_user_session_path
+    instead?
