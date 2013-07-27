@@ -2,6 +2,14 @@ class TeamPresenter < Presenter
 
   presents_as :team
 
+  def badge
+    raw <<-HTML
+      <div class="badge-outer team-badge">
+        <a href="#{h team_path(team)}">#{h team}</a>
+      </div>
+    HTML
+  end
+
   def badges
     users = team.users.order("created_at ASC").to_a
 

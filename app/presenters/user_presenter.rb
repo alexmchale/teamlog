@@ -6,7 +6,7 @@ class UserPresenter < Presenter
 
   def badge
     raw <<-HTML
-      <div class="user-badge" data-user-id="#{h user.id}">
+      <div class="badge-outer user-badge" data-user-id="#{h user.id}">
         #{gravatar_tag}
         <div class="user-email"><span class="user-email-inner">#{h user.email}</span></div>
         <span class="user-message">#{h last_message_content}</span>

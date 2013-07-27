@@ -1,9 +1,3 @@
-.form-container
-
-  %h1 teams
-
-  %ul
-    - @teams.each do |team|
-      %li= link_to team.name, team_path(team)
-
-  %p= link_to "create a team", new_team_path
+.team-badges.js-masonry{:data => { :masonry_options => h({ :gutter => 10, :itemSelector => ".badge-outer", :isFitWidth => true }.to_json) }}
+  = present @teams do |team_presenter|
+    = team_presenter.badge
