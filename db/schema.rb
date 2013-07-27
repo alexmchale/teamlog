@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726100020) do
+ActiveRecord::Schema.define(:version => 20130727134049) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130726100020) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "team_users", ["team_id", "user_id"], :name => "unique_team_members", :unique => true
   add_index "team_users", ["team_id"], :name => "index_team_users_on_team_id"
   add_index "team_users", ["user_id"], :name => "index_team_users_on_user_id"
 
