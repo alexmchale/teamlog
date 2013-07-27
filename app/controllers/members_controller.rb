@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
 
+  before_filter :check_logged_in!
   before_filter :load_team
 
   def new
