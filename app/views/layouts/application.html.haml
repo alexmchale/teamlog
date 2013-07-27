@@ -39,7 +39,8 @@
     - if flash[:notice].present?
       .alert.alert-success= flash[:notice]
 
-    = yield
+    .main-content
+      = yield
 
     = javascript_include_tag :application
     = onload_tag
