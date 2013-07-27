@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     TeamUser.create! team_id: team.id, user_id: self.id
   end
 
+  def to_s
+    email
+  end
+
   def self.find_by_email(email)
     where("LOWER(email) = ?", email.to_s.downcase).first
   end

@@ -1,3 +1,5 @@
-%h1= t "activate_email_subject"
+%h2 Activate Your StatusKeeper Account
 
-%p= link_to t("activate_link"), edit_user_activation_url(@user, secret_code: @user.secret_code)
+%h1 #{@inviter} invited you to join #{@team}
+
+%p= link_to "Click here to accept #{@inviter}'s invitation to join #{@team}", edit_user_activation_url(@user, :secret_code => @user.secret_code)

@@ -14,7 +14,7 @@ class MembersController < ApplicationController
 
     if @user.save
       TeamUser.create(:team_id => @team.id, :user_id => @user.id)
-      UserMailer.activate_message(@user).deliver if @user.password_hash.blank?
+      UserMailer.activate_message(current_user, @team, @user).deliver if @user.password_hash.blank?
       redirect_to @team
     else
       render "new"

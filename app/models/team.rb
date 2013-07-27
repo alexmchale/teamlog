@@ -30,4 +30,8 @@ class Team < ActiveRecord::Base
     Message.current_team(self.id)
   end
 
+  def to_s
+    name
+  end
+
 end

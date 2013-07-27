@@ -6,9 +6,11 @@ class UserMailer < ActionMailer::Base
     :host => "zeus.local:3001",
   }
 
-  def activate_message(user)
-    @user = user
-    mail :to => user.email, :subject => "please activate your teamlog account"
+  def activate_message(inviter, team, user)
+    @inviter = inviter
+    @team    = team
+    @user    = user
+    mail :to => user.email, :subject => "StatusKeeper: You are invited to join #{team}"
   end
 
 end

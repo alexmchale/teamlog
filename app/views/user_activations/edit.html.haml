@@ -1,6 +1,8 @@
-%h1 activate user #{@user.email}
+.form-container
 
-= simple_form_for @user, :url => user_activation_path(@user) do |f|
+  %h1 activate user #{@user.email}
 
-  = f.input :password
-  = f.submit
+  = simple_form_for @user, :url => user_activation_path(@user) do |f|
+
+    = f.input :password
+    = f.submit
