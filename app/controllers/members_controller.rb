@@ -10,6 +10,8 @@ class MembersController < ApplicationController
     @user = User.find_by_email(params[:user][:email])
     @user ||= User.new(user_params)
 
+    @user.skip_new_team = true
+
     if @user.save
       TeamUser.create(:team_id => @team.id, :user_id => @user.id)
       UserMailer.activate_message(@user).deliver if @user.password_hash.blank?
