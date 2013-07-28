@@ -1,0 +1,9 @@
+.form-container
+
+  %h1 Reset Your Password
+
+  = simple_form_for @user, :url => password_reset_path(@user.secret_code) do |f|
+
+    = f.input :password
+
+    = f.submit

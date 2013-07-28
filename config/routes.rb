@@ -6,6 +6,7 @@ RailsSkeleton::Application.routes.draw do
   end
 
   resources :messages
+  resources :password_resets
   resources :user_activations
   resources :user_sessions
   resources :users

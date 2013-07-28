@@ -13,4 +13,10 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "StatusKeeper: You are invited to join #{team}"
   end
 
+  def password_reset_message(user)
+    @user = user
+    @secret_code = user.secret_code
+    mail :to => user.email, :subject => "StatusKeeper: Your password reset link"
+  end
+
 end

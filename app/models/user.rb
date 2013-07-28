@@ -39,8 +39,13 @@ class User < ActiveRecord::Base
     email
   end
 
+  def grant_new_secret_code!
+    self.secret_code = Digest::SHA1.hexdigest([ Time.now, rand ].join)
+    self.save!
+  end
+
   def self.find_by_email(email)
-    where("LOWER(email) = ?", email.to_s.downcase).first
+    where("LOWER(email) = ?", email.to_s.downcase).first if email.present?
   end
 
 end

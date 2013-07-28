@@ -1,0 +1,14 @@
+.form-container
+
+  %h1 Reset Your Password
+
+  = simple_form_for @password_reset do |f|
+
+    = f.input :email, :required => false
+
+    = f.submit
+
+  %p
+    did you remember your password?
+    = link_to "sign in now", new_user_session_path
+    instead
