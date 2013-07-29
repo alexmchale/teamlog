@@ -14,7 +14,7 @@ class MembersController < ApplicationController
     @user.skip_new_team = true
 
     if @user.save
-      TeamUser.create(:team_id => @team.id, :user_id => @user.id)
+      TeamUser.add_member(@team, @user)
       UserMailer.activate_message(current_user, @team, @user).deliver if @user.password_hash.blank?
       redirect_to @team
     else
