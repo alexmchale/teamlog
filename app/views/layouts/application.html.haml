@@ -31,8 +31,8 @@
               = link_to @team.name, team_path(@team)
             &bull;
             = link_to "add member", new_team_member_path(@team)
-            &bull;
-            = link_to "update your status", new_team_message_path(@team)
+            /&bull;
+            /= link_to "update your status", new_team_message_path(@team)
 
     - if flash[:error].present?
       .alert.alert-error= flash[:error]
