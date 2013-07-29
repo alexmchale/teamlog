@@ -1,5 +1,7 @@
 $ ->
 
+  $newMessageField = $("#message_content")
+  $newMessageForm  = $newMessageField.closest("form")
   $badgesContainer = $("#team_badges")
   $teamId          = $("#team_id")
   teamId           = $teamId.val()
@@ -68,6 +70,15 @@ $ ->
 
       # Plan on polling again.
       setTimeout refreshTeamStatus, refreshFrequency
+
+  $newMessageForm.on "submit", ->
+    url = $newMessageForm.attr("action")
+    $.ajax
+      type:    "POST"
+      url:     url
+      data:    $newMessageForm.serialize()
+      success: -> refreshTeamStatus() ; $newMessageField.val("")
+    return false
 
   reflowContainer($("#team_badges .user-badges-inner"))
 
