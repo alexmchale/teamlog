@@ -8,9 +8,10 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team     = current_user.teams.find(params[:id])
-    @users    = @team.users
-    @messages = @team.current_messages
+    @team        = current_user.teams.find(params[:id])
+    @users       = @team.users
+    @messages    = @team.current_messages
+    @new_message = Message.new
 
     respond_to do |format|
       format.html do
