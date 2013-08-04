@@ -6,6 +6,7 @@ gem 'pg'
 
 gem 'airbrake'
 gem 'bcrypt-ruby'
+gem 'capistrano'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'onload_js-rails'
