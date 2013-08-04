@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727134049) do
+ActiveRecord::Schema.define(:version => 20130729030534) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "team_user_id", :null => false
   end
 
   add_index "messages", ["team_id"], :name => "index_messages_on_team_id"

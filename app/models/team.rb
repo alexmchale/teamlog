@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
   ### Methods ###
 
   def current_messages
-    Message.current_team(self.id)
+    Message.current_team(self.id).order("created_at DESC")
   end
 
   def to_s

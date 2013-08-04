@@ -15,6 +15,10 @@ class UserPresenter < Presenter
     HTML
   end
 
+  def email
+    user.email
+  end
+
   def last_message
     @last_message ||= Message.where(user_id: user.id, team_id: team.id).newest_first.first
   end

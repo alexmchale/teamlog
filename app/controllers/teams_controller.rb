@@ -10,7 +10,6 @@ class TeamsController < ApplicationController
   def show
     @team        = current_user.teams.find(params[:id])
     @users       = @team.users
-    @messages    = @team.current_messages
     @new_message = Message.new
 
     respond_to do |format|
@@ -24,7 +23,7 @@ class TeamsController < ApplicationController
         user_presenters = @users.map { |u| UserPresenter.new u, view_context }
         user_presenters.each { |u| u.team = @team }
 
-        render :json => { :team => @team, :users => user_presenters, :messages => @messages }
+        render :json => { :team => @team, :users => user_presenters }
       end
     end
   end
