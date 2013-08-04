@@ -34,7 +34,7 @@ $ ->
     $.getJSON "/teams/#{teamId}", (data) ->
 
       # The masonry container.
-      $container = $("#team_badges .user-badges-inner")
+      $container = $badgesContainer.find(".user-badges-inner")
 
       # Turn the list of users into a hash.
       users = {}

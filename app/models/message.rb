@@ -1,7 +1,9 @@
 class Message < ActiveRecord::Base
 
-  belongs_to :user
-  belongs_to :team
+  belongs_to :team_user
+
+  delegate :user, :to => :team_user
+  delegate :team, :to => :team_user
 
   validates :user, presence: true, associated: true
 

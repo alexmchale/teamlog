@@ -14,8 +14,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.user = current_user
-    @message.team = team
+    @message.team_user = TeamUser.where(:user_id => current_user.id, :team_id => team.id).first
 
     if @message.save
       redirect_to team_path(team)
