@@ -20,6 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'awesome_print', require: 'ap'
   gem 'better_errors'
