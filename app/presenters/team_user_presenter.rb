@@ -7,16 +7,16 @@ class TeamUserPresenter < Presenter
       <div class="badge-outer user-badge" data-user-id="#{h team_user.user_id}">
         #{user_presenter.gravatar_tag}
         <div class="user-email"><span class="user-email-inner">#{h user_presenter.email}</span></div>
-        <span class="user-message">#{h message_content}</span>
-        <span class="user-timestamp">#{h message_created_at}</span>
+        <span class="user-message">#{h team_user.message_content}</span>
+        <span class="user-timestamp">#{h team_user.message_created_at}</span>
       </div>
     HTML
   end
 
   def user_presenter
     @user_presenter ||=
-      UserPresenter.new(message.user, @template).tap do |presenter|
-        presenter.team = message.team
+      UserPresenter.new(team_user.user, @template).tap do |presenter|
+        presenter.team = team_user.team
       end
   end
 

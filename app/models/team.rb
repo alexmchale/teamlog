@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
 
   ### Scopes ###
 
-  scope :alphabetical, order("LOWER(name) ASC")
+  scope :alphabetical, -> { order("LOWER(name) ASC") }
 
   ### Validations ###
 

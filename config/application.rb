@@ -48,9 +48,6 @@ module RailsSkeleton
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
-    # Disable requiring attr_accessible in favor of strong_parameters.
-    config.active_record.whitelist_attributes = false
-
     # Enable the asset pipeline
     config.assets.enabled = true
 

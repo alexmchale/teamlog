@@ -9,4 +9,4 @@ unless File.exists? secret_token_path
   File.open(secret_token_path, "w") { |f| f.write secret_token }
 end
 
-RailsSkeleton::Application.config.secret_token = File.read secret_token_path
+RailsSkeleton::Application.config.secret_key_base = File.read secret_token_path
