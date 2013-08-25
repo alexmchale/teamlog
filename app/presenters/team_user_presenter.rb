@@ -25,7 +25,9 @@ class TeamUserPresenter < Presenter
   end
 
   def created_at
-    "#{time_ago_in_words(team_user.message_created_at)} ago"
+    if team_user.message_created_at
+      "#{time_ago_in_words(team_user.message_created_at)} ago"
+    end
   end
 
   def as_json(options = {})

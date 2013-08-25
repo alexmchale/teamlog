@@ -8,7 +8,7 @@ class Team < ActiveRecord::Base
 
   has_many :team_users
   has_many :users, :through => :team_users
-  has_many :messages
+  has_many :messages, :through => :team_users
 
   ### Scopes ###
 
@@ -43,6 +43,7 @@ class Team < ActiveRecord::Base
         joins("LEFT JOIN messages ON team_users.id = messages.team_user_id").
         includes(:team, :user).
         where("team_users.team_id = ?", self.id).
+        order("team_users.id, messages.created_at DESC").
         to_a
 
     team_users.sort! do |tu1, tu2|
