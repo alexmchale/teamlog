@@ -5,7 +5,6 @@ $ ->
   $badgesContainer = $("#team_badges")
   $teamId          = $("#team_id")
   teamId           = $teamId.val()
-  refreshFrequency = 15000
   maxEmailWidth    = 220
 
   return unless teamId?
@@ -68,9 +67,6 @@ $ ->
       # Reflow our masonry layout to account for any changes in badge size.
       reflowContainer($container)
 
-      # Plan on polling again.
-      setTimeout refreshTeamStatus, refreshFrequency
-
   $newMessageForm.on "submit", ->
     url = $newMessageForm.attr("action")
     $.ajax
@@ -82,4 +78,4 @@ $ ->
 
   reflowContainer($("#team_badges .user-badges-inner"))
 
-  setTimeout refreshTeamStatus, refreshFrequency
+  joinTeam(teamId, refreshTeamStatus)

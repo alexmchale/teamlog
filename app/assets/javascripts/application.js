@@ -19,7 +19,9 @@
 //= require vendor/masonry.pkgd.min.js
 //= require vendor/imagesloaded.pkgd.js
 //= require vendor/underscore.js
+//= require socket.io/socket.io.js
 //
 // ## Application Libraries ##
 //
 //= require teams
+//= require team_listener
