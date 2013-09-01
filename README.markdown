@@ -35,3 +35,8 @@ Schema
 * user id
 * team id
 * content
+
+Socket Server
+-------------
+
+    npm install socket.io hiredis redis
