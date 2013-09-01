@@ -26,4 +26,12 @@ RailsSkeleton::Application.configure do
   # Load classes as needed.
   config.eager_load = false
 
+  # Use MockSmtp when in development mode.
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "localhost",
+    :port => 1025,
+    :domain => "www.yourdomain.com"
+  }
+
 end
